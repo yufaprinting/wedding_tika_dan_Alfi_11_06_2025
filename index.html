@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Tika & Alvi</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      overflow: hidden;
+      height: 100%;
+    }
+    .swiper {
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+    }
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      position: relative;
+    }
+
+    h1, h2 {
+      font-family: 'Dancing Script', cursive;
+      color: #000000; /* tulisan hitam polos */
+      text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.8),
+        0 0 15px rgba(255, 255, 255, 0.6);
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+      margin: 10px 0;
+    }
+    p {
+      margin: 10px 0;
+    }
+
+    .slide1 h2 {
+      font-size: 1.5rem;
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      color: #000000; /* hitam */
+      text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.8),
+        0 0 15px rgba(255, 255, 255, 0.6);
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+      font-family: 'Poppins', sans-serif;
+      z-index: 10;
+    }
+    .slide1 h1 {
+      font-size: 3rem;
+      margin-top: 80px;
+      margin-bottom: 10px;
+      color: #000000; /* hitam */
+      text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.8),
+        0 0 15px rgba(255, 255, 255, 0.6);
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+      transition: background 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    /* Galeri kecil dan efek zoom saat disentuh */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 10px;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .gallery img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      touch-action: manipulation;
+    }
+
+    .gallery img:hover,
+    .gallery img:active {
+      transform: scale(1.5);
+      z-index: 10;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Background per slide */
+    .slide1 { background: url('photo1.jpg') no-repeat center/cover; }
+    .slide2 { background: url('photo2.jpg') no-repeat center/cover; }
+    .slide3 { background: url('photo3.jpg') no-repeat center/cover; }
+    .slide4 { background: url('photo4.jpg') no-repeat center/cover; }
+    .slide5 { background: url('photo5.jpg') no-repeat center/cover; }
+    .slide6 { background: url('photo6.jpg') no-repeat center/cover; }
+    .slide7 { background: url('photo7.jpg') no-repeat center/cover; }
+    .slide8 { background: url('photo8.jpg') no-repeat center/cover; }
+    .slide9 { background: url('photo4.jpg') no-repeat center/cover; }
+    .slide10 { background: url('photo3.jpg') no-repeat center/cover; }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .swiper-slide-active .fade-in {
+      animation: fadeInUp 1s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #countdown {
+      margin-top: 30px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+      letter-spacing: 2px;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .design-by {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" src="musik.mp3" loop></audio>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide slide1">
+        <h2 class="fade-in">The Wedding of</h2>
+        <h1 class="fade-in">Tika & AlFi</h1>
+        <p class="fade-in">Kepada Yth,</p>
+        <button class="btn fade-in" onclick="openInvitation()">Buka Undangan</button>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide slide2">
+        <h1 class="fade-in">Tika & AlFi</h1>
+        <p class="fade-in">"Cinta adalah ketika kebahagiaan orang lain lebih penting daripada kebahagiaanmu sendiri."</p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide slide3">
+        <h2 class="fade-in">Mempelai Wanita</h2>
+        <p class="fade-in"><strong>MUSTIKA SARI</strong></p>
+        <p class="fade-in">Putri Bapak hamedi & Ibu Nadrah Sagala</p>
+        <p class="fade-in">Tanggal Lahir: 05 September 2006</p>
+        <a class="btn fade-in" href="https://instagram.com/thi_kaa05" target="_blank">Instagram</a>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="swiper-slide slide4">
+        <h2 class="fade-in">Mempelai Pria</h2>
+        <p class="fade-in"><strong>AlFI SAHREN</strong></p>
+        <p class="fade-in">Putra Bapak Eri Rahman & Ibu Siti Hafsah</p>
+        <p class="fade-in">Tanggal Lahir: 04 Oktober 2000</p>
+        <a class="btn fade-in" href="https://instagram.com/alsahren04" target="_blank">Instagram Alvi</a>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="swiper-slide slide5">
+        <h2 class="fade-in">Akad & Resepsi</h2>
+        <p class="fade-in">📅 Akad: Selasa 10 Juni 2025 pukul 10.00 WIB</p>
+        <p class="fade-in">📅 Resepsi: Rabu 11 Juni 2025 pukul 10.00 WIB</p>
+        <p class="fade-in">📍 Jl. Sei Sakat, Panai Hilir</p>
+        <a class="btn fade-in" href="https://maps.app.goo.gl/buvfUTG1ue9wdjBbA" target="_blank">Lokasi</a>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="swiper-slide slide6">
+        <h2 class="fade-in">Love Story</h2>
+        <p class="fade-in">Perjalanan cinta ini berawal dari pertemuan sederhana, tumbuh dalam tawa dan tangis, hingga kini mengikat janji suci dalam satu ikatan cinta abadi.</p>
+      </div>
+
+      <!-- Slide 7 - Galeri -->
+      <div class="swiper-slide slide7">
+        <h2 class="fade-in">Galeri Foto</h2>
+        <div class="gallery fade-in">
+          <img src="photo1.jpg" alt="Foto 1" />
+          <img src="photo2.jpg" alt="Foto 2" />
+          <img src="photo3.jpg" alt="Foto 3" />
+          <img src="photo4.jpg" alt="Foto 4" />
+          <img src="photo5.jpg" alt="Foto 5" />
+          <img src="photo6.jpg" alt="Foto 6" />
+        </div>
+      </div>
+
+      <!-- Slide 8 -->
+      <div class="swiper-slide slide8">
+        <h2 class="fade-in">Wedding Gift</h2>
+        <p class="fade-in">Terima kasih atas doa dan restunya.</p>
+        <p class="fade-in">
+        <p class="fade-in">📱 DANA: 082162101406</p>
+        <button class="btn fade-in">Kirim Hadiah</button>
+      </div>
+
+      <!-- Slide 9 -->
+      <div class="swiper-slide slide9">
+        <h2 class="fade-in">Turut Mengundang</h2>
+        <p class="fade-in">usman taroli/Rahimah (Atok-enek)</p>
+<p class="fade-in">Hamdani (Incek)</p>
+<p class="fade-in">Ilham (Incek)</p>
+<p class="fade-in">Payeluddin Sagala (Atok-enek)</p>
+<p class="fade-in">Siis/Inor (Incek-Ibu)</p>
+<p class="fade-in">Rahmansyah (Pakcik)</p>
+<p class="fade-in">Seluruh Keluarga</p>
+      </div>
+
+      <!-- Slide 10 -->
+      <div class="swiper-slide slide10">
+        <h2 class="fade-in">Terima Kasih</h2>
+        <p class="fade-in">Atas doa dan kehadiran Bapak/Ibu/Saudara/i</p>
+        <div id="countdown" class="fade-in"></div>
+        <div class="design-by">Design By : Yufa Printing</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    let music = document.getElementById("bg-music");
+    let swiper;
+
+    function openInvitation() {
+      music.play();
+      swiper.allowTouchMove = true;
+      swiper.slideNext();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      swiper = new Swiper(".mySwiper", {
+        direction: "vertical",
+        effect: "flip",
+        flipEffect: {
+          slideShadows: true,
+          limitRotation: true,
+        },
+        speed: 700,
+        allowTouchMove: false,
+        mousewheel: true,
+        slidesPerView: 1,
+      });
+
+      const countdownElement = document.getElementById('countdown');
+      const weddingDate = new Date('June 11, 2025 10:00:00 GMT+0700');
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = weddingDate - now;
+
+        if (diff <= 0) {
+          countdownElement.textContent = "Selamat! Hari Pernikahan Telah Tiba 🎉";
+          clearInterval(timerInterval);
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        countdownElement.textContent =
+          days + " Hari " + hours.toString().padStart(2, '0') + ":" +
+          minutes.toString().padStart(2, '0') + ":" +
+          seconds.toString().padStart(2, '0');
+      }
+
+      updateCountdown();
+      const timerInterval = setInterval(updateCountdown, 1000);
+    });
+  </script>
+</body>
+</html>
